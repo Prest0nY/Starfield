@@ -1,26 +1,29 @@
 import pygame
-from starfield import *
+import sys
+from starfield import Starfield
 
-screen = pygame.display.set_mode([1100,1100])
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode([1100, 1100])
 
-stars = []
-for i in range(250):
-    stars.append(Starfield(screen))
+    stars = [Starfield(screen) for _ in range(250)]
 
-running = True
+    running = True
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    screen.fill("black")
-    for i in range(len(stars)):
-        stars[i].update()
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
 
+        screen.fill("black")
 
+        for star in stars:
+            star.update()
 
+        pygame.display.update()
 
+    pygame.quit()
+    sys.exit()
 
-    pygame.display.update()
-
-pygame.quit()
+if __name__ == "__main__":
+    main()
