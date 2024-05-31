@@ -1,3 +1,4 @@
+# main.py
 import pygame
 import sys
 from starfield import Starfield
